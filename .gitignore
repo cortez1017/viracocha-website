@@ -1,0 +1,24 @@
+# macOS and editor files
+.DS_Store
+.AppleDouble
+._*
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Optional future tooling
+node_modules/
+dist/
+build/
+coverage/
+.vercel/
+*.log
