@@ -34,27 +34,26 @@ Use GitHub Issues to assign work. Avoid editing the same page simultaneously wit
 
 Recommended repository settings once teammates are available: require pull requests and one approval for `main`, block force pushes and deletion, and enable automatic deletion of merged branches. Rules depend on the account plan and repository visibility. These settings have not yet been applied.
 
-## Deployment: Vercel (connection pending)
+## Deployment: GitHub Pages
 
-Repository: <https://github.com/cortez1017/viracocha-website> (private).
+Repository: <https://github.com/cortez1017/viracocha-website> (public).
 
-GitHub Pages is unavailable for this private repository on the current account plan. Use Vercel to deploy the static site while keeping the source repository private. A private repository does not make the deployed website private; configure visitor access separately if required.
+Website: <https://cortez1017.github.io/viracocha-website/>.
 
-`vercel.json` selects no framework, skips installation and building, and serves the repository root. See [Vercel static build configuration](https://vercel.com/docs/builds/configure-a-build).
+GitHub Pages publishes from `main` and the repository root through **Settings → Pages → Deploy from a branch**. The `.nojekyll` marker serves the static files without Jekyll processing. No dependency installation or build is required. Merging a pull request into `main` triggers the next website deployment.
 
-After connecting Vercel:
-
-1. Import `cortez1017/viracocha-website` and grant access to this repository.
-2. Use the repository root, framework preset **Other**, no build command, and output directory **.**.
-3. Set the production branch to `main`.
-4. Deploy and confirm the home page, menu, and images work at the generated URL.
-5. Use pull-request preview deployments for review, then merge into `main` to update production.
-
-No live deployment or Vercel project has been created yet. Connection is required to finish setup. The `.nojekyll` file also permits GitHub Pages if the account becomes eligible later.
+Use relative links for images, styles, scripts, and pages so they work under `/viracocha-website/`. Changes may take a few minutes to appear; check the repository Actions tab for deployment progress.
 
 ## Local Git access
 
-The original iCloud project remains unchanged. This prepared copy contains the website and collaboration files. A normal Git fetch was rejected because the Mac's saved GitHub credentials are invalid. After signing Git in using GitHub CLI or GitHub Desktop, clone the private repository into a new local folder and work from that clone. Do not treat the prepared copy as a synchronized checkout until authentication and fetching have succeeded.
+Clone the repository into your own local folder:
+
+```sh
+git clone https://github.com/cortez1017/viracocha-website.git
+cd viracocha-website
+```
+
+Reading this public repository does not require signing in. To push your own branches, authenticate GitHub through GitHub Desktop, GitHub CLI, or SSH. The original iCloud project is a separate copy; work from a clone to synchronize changes with the team.
 
 ## Existing content gaps
 
