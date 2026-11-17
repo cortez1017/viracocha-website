@@ -470,12 +470,15 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    RESOURCES
    ========================================================= */
+.res-page{
+  background-color: #63A9E3;
+}
 
 .res-button-container {
   display:flex;
   justify-content:center;
   flex-wrap: wrap;
-  gap:40px;
+  gap:20px;
   padding-top: 20px;
   padding-bottom: 20px;
 
@@ -486,8 +489,8 @@ a { color: inherit; text-decoration: none; }
     justify-content: center;
     align-items: center;
 
-    width: 400px;
-    height: 360px;
+    width: 600px;
+    height: 540px;
     border-radius: 10px;
     background-size: cover;
     background-position: center;
@@ -502,17 +505,17 @@ a { color: inherit; text-decoration: none; }
 }
 
 .res-button:hover{
-  transform:scale(1.1);
+  transform:scale(1.05);
 }
 
 .instagram-button{
-  background-image: linear-gradient(rgba(0, 150, 255, 0.5),rgba(0, 100, 255, 0.5)), url("images/LSU_shield.png");
+  background-image: linear-gradient(rgba(0, 150, 255, 0.5),rgba(0, 100, 255, 0.5)), url("images/storm_castle.JPG");
 }
 
 .lsu-national-site-button{
-  background-image: linear-gradient(rgba(0, 150, 255, 0.5),rgba(0, 100, 255, 0.5)), url("images/LSU_shield.png");
+  background-image: linear-gradient(rgba(0, 150, 255, 0.5),rgba(0, 100, 255, 0.5)), url("images/WebsitePic.png");
 }
 
 .interest-form-button{
-  background-image: linear-gradient(rgba(0, 150, 255, 0.5),rgba(0, 100, 255, 0.5)), url("images/LSU_shield.png");
+  background-image: linear-gradient(rgba(0, 150, 255, 0.5),rgba(0, 100, 255, 0.5)), url("images/InterestFormPic.png");
 }
