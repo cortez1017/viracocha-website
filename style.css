@@ -1,6 +1,13 @@
 /* =========================================================
    VIRACOCHA — Brand tokens
    Baby blue + black + white, per actual chapter merch/crest.
+
+   File layout: brand tokens and base resets first, then one
+   block per page section in the same order as index.html,
+   then responsive breakpoints at the bottom.
+
+   Change a site-wide color or font here once; every rule
+   uses these variables through var(--name).
    ========================================================= */
 :root {
   --baby-blue: #63A9E3;
@@ -13,6 +20,10 @@
   --font: 'Lato', Arial, sans-serif;
 }
 
+/* ----- Base resets -----
+   border-box makes padding count inside an element's width.
+   Smooth scrolling animates in-page links like #pillars.
+   Default margins are removed so spacing is set per section. */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
@@ -34,7 +45,9 @@ p { margin: 0; }
 a { color: inherit; text-decoration: none; }
 
 /* =========================================================
-   HEADER / NAV — floats over hero, solidifies on scroll
+   HEADER / NAV — solid black bar that sticks to the top
+   while scrolling (position: sticky). z-index keeps it
+   above the hero photo and other sections.
    ========================================================= */
 .site-header {
   position: sticky;
@@ -78,6 +91,9 @@ a { color: inherit; text-decoration: none; }
   display: block;
 }
 
+/* Hidden by default: invisible, nudged up 8px, and not clickable.
+   script.js adds .open to fade and slide it into place.
+   Opacity is used instead of display:none so the transition can animate. */
 .dropdown-menu {
   position: absolute;
   top: calc(100% + 8px);
@@ -123,6 +139,7 @@ a { color: inherit; text-decoration: none; }
   align-items: flex-end;
 }
 
+/* Photo layer: grayscale so the blue duotone layer tints it evenly. */
 .hero-photo {
   position: absolute;
   inset: 0;
@@ -131,6 +148,8 @@ a { color: inherit; text-decoration: none; }
   filter: grayscale(1) contrast(1.05);
 }
 
+/* Blue layer on top of the gray photo. Raise or lower opacity
+   to show less or more of the photo underneath. */
 .hero-duotone {
   position: absolute;
   inset: 0;
@@ -156,6 +175,8 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 18px;
 }
 
+/* clamp(min, preferred, max) scales text with the screen width
+   (vw) but never smaller than min or larger than max. */
 .hero h1 {
   font-size: clamp(3.2rem, 9vw, 6.5rem);
   line-height: 0.95;
@@ -177,6 +198,10 @@ a { color: inherit; text-decoration: none; }
   flex-wrap: wrap;
 }
 
+/* ----- Buttons -----
+   .btn is the shared base. Add one variant:
+   .btn-primary (blue fill), .btn-ghost (white outline for dark/photo
+   backgrounds), or .btn-outline-black (black outline for light backgrounds). */
 .btn {
   display: inline-block;
   padding: 15px 28px;
@@ -253,6 +278,9 @@ a { color: inherit; text-decoration: none; }
 .pillars h2 { font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
 .pillars .section-sub { color: rgba(255,255,255,0.6); }
 
+/* The thin divider lines between cards are a trick: the grid has a
+   faint white background and a 1px gap, and each card is solid black,
+   so the background only shows through the gaps. */
 .pillar-grid {
   margin-top: 48px;
   max-width: 1240px;
@@ -298,6 +326,9 @@ a { color: inherit; text-decoration: none; }
   min-height: 560px;
 }
 
+/* Reverse variant: flipping the grid direction to right-to-left
+   swaps the photo to the right. Children are set back to
+   left-to-right so the text itself still reads normally. */
 .split-section--reverse { direction: rtl; }
 .split-section--reverse > * { direction: ltr; }
 
@@ -318,6 +349,7 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 20px;
 }
 
+/* Body text only. The eyebrow label keeps its own blue style. */
 .split-text p:not(.section-eyebrow) {
   color: var(--gray);
   font-size: 1.05rem;
@@ -337,6 +369,8 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
 }
 
+/* Dark on the left, fading to clear on the right, so the text
+   (aligned left) is readable while the photo stays visible. */
 .feature-scrim {
   position: absolute;
   inset: 0;
@@ -409,6 +443,8 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    RESPONSIVE
    ========================================================= */
+/* Tablets and small laptops: 2-column grids, and split sections
+   stack with the photo on top of the text. */
 @media (max-width: 900px) {
   .pillar-grid { grid-template-columns: repeat(2, 1fr); }
   .link-grid { grid-template-columns: repeat(2, 1fr); }
@@ -417,6 +453,7 @@ a { color: inherit; text-decoration: none; }
   .split-text { padding: 56px 28px; }
 }
 
+/* Phones: everything goes to a single column. */
 @media (max-width: 560px) {
   .pillar-grid { grid-template-columns: 1fr; }
   .link-grid { grid-template-columns: 1fr; }
@@ -424,6 +461,8 @@ a { color: inherit; text-decoration: none; }
   .hero { min-height: 92vh; }
 }
 
+/* Accessibility: turn off animations for visitors who asked their
+   device to reduce motion. */
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; scroll-behavior: auto !important; }
 }

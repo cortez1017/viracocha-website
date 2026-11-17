@@ -1,9 +1,23 @@
 <!DOCTYPE html>
+<!--
+  VIRACOCHA — Home page (index.html)
+  Static page: no build step. Styles live in style.css, the dropdown menu
+  logic lives in script.js, and photos live in images/.
+
+  Editing tips:
+  - Use relative paths (images/x.jpg, history.html) so links keep working
+    on GitHub Pages under /viracocha-website/.
+  - Image filenames are case-sensitive on GitHub Pages (Founders.jpg, not founders.jpg).
+  - Each section below is marked with a ===== comment. Its matching styles
+    are under the same heading in style.css.
+-->
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Viracocha | Lambda Sigma Upsilon — Stevens Chapter</title>
+  <!-- Google Fonts: Lato is the only typeface on the site (see --font in style.css).
+       The preconnect hints start the font connection early so text renders faster. -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
@@ -11,7 +25,12 @@
 </head>
 <body>
 
-  <!-- ===== HEADER / NAV ===== -->
+  <!-- ===== HEADER / NAV =====
+       Sticky black bar with the brand name and a three-dot menu button.
+       The button opens #dropdownMenu (logic in script.js). aria-controls and
+       aria-expanded tell screen readers which menu it controls and whether it is open.
+       Note: history.html, philanthropy.html, brotherhood.html, and resources.html
+       are not built yet, so those links currently 404 (see issue #4 for Resources). -->
   <header class="site-header">
     <div class="header-inner">
       <a href="index.html" class="brand">VIRACOCHA</a>
@@ -33,7 +52,13 @@
   </header>
 
   <main>
-    <!-- ===== HERO — full bleed photo ===== -->
+    <!-- ===== HERO — full bleed photo =====
+         Four stacked layers, back to front:
+           1. .hero-photo   — the background photo (converted to grayscale in CSS)
+           2. .hero-duotone — baby-blue overlay that tints the photo
+           3. .hero-scrim   — reserved for an extra darkening layer (no styles yet)
+           4. .hero-content — the text and buttons
+         To change the photo, edit the background-image URL on .hero-photo. -->
     <section class="hero">
         <div class="hero-photo" style="background-image: url('images/ucc2nd.jpeg');"></div>
         <div class="hero-duotone"></div>
@@ -49,7 +74,8 @@
       </div>
     </section>
 
-    <!-- ===== WELCOME STRIP — baby blue ===== -->
+    <!-- ===== WELCOME STRIP — baby blue =====
+         Short intro paragraph that lists the four pillars in one sentence. -->
     <section class="welcome-strip">
       <p>
         Academic Excellence, Culture Awareness & Diversity, Brotherhood, and 
@@ -59,7 +85,10 @@
       </p>
     </section>
 
-    <!-- ===== FOUR PILLARS — black band ===== -->
+    <!-- ===== FOUR PILLARS — black band =====
+         id="pillars" is the target of the hero's "See What We Stand For" button.
+         Each .pillar-card has a number tag, title, and one-line description.
+         The grid shows 4 columns on desktop, 2 on tablets, 1 on phones. -->
     <section class="pillars" id="pillars">
       <div class="section-head">
         <h2>The Four Pillars</h2>
@@ -89,7 +118,9 @@
       </div>
     </section>
 
-    <!-- ===== NATIONAL / LSU HISTORY — photo split ===== -->
+    <!-- ===== NATIONAL / LSU HISTORY — photo split =====
+         Two-column layout: photo on the left, text on the right.
+         Change the image through the background-image URL on .split-photo. -->
     <section class="split-section">
       <div class="split-photo" style="background-image: url('images/LSU_shield.png');"></div>
       <div class="split-text">
@@ -105,7 +136,9 @@
       </div>
     </section>
 
-    <!-- ===== BROTHERHOOD TEASER — full bleed photo ===== -->
+    <!-- ===== BROTHERHOOD TEASER — full bleed photo =====
+         The photo is set on the section itself. .feature-scrim adds a dark
+         left-to-right gradient so the white text stays readable over it. -->
     <section class="feature-photo" style="background-image: url('images/Founders.jpg');">
       <div class="feature-scrim"></div>
       <div class="feature-content">
@@ -115,7 +148,9 @@
       </div>
     </section>
 
-    <!-- ===== DIVERSITY / REACH — photo split, reversed ===== -->
+    <!-- ===== DIVERSITY / REACH — photo split, reversed =====
+         Same layout as the LSU section, but split-section--reverse puts the
+         photo on the right. The HTML order stays photo-then-text. -->
     <section class="split-section split-section--reverse">
       <div class="split-photo" style="background-image: url('images/chapterpic.jpeg');"></div>
       <div class="split-text">
@@ -130,7 +165,9 @@
       </div>
     </section>
 
-    <!-- ===== HELPFUL LINKS ===== -->
+    <!-- ===== HELPFUL LINKS =====
+         Replaces the chapter Linktree. Add a link by copying one <a class="link-card">.
+         The LinkedIn card is a placeholder (href="#") until the chapter URL is added. -->
     <section class="links">
       <div class="section-head">
         <h2>Helpful Links</h2>
@@ -147,11 +184,13 @@
     </section>
   </main>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- ===== FOOTER =====
+       Update the copyright year here each January. -->
   <footer class="site-footer">
     <p>&copy; 2026 Viracocha &mdash; Lambda Sigma Upsilon, Stevens Institute of Technology Chapter</p>
   </footer>
 
+  <!-- Loaded last so the header elements exist before script.js looks them up. -->
   <script src="script.js"></script>
 </body>
 </html>
